@@ -24,6 +24,8 @@ import { AddMemoryComponent } from './add-memory/add-memory.component';
 import { ViewMemoriesComponent } from './view-memories/view-memories.component';
 import { RouterModule, Routes } from '@angular/router';
 import {FormsModule} from "@angular/forms";
+import {AuthenticationService} from "./shared/authentication.service";
+import { AngularFireAuthModule } from "@angular/fire/auth";
 
 @NgModule({
   declarations: [
@@ -61,8 +63,9 @@ import {FormsModule} from "@angular/forms";
     MatNativeDateModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
+    AngularFireAuthModule
   ],
-  providers: [],
+  providers: [AuthenticationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,1 +1,18 @@
-<router-outlet></router-outlet>
+<div *ngIf="!(authenticationService.userData | async)">
+
+  <div style="text-align: center">
+    <input matInput type="text" [(ngModel)]="email" placeholder="email">
+    <input matInput type="password" [(ngModel)]="password" placeholder="password">
+
+    <button mat-button (click)="signUp()">Sign Up</button>
+
+    <button mat-button (click)="signIn()">Login</button>
+  </div>
+</div>
+<div *ngIf="authenticationService.userData | async">
+  <router-outlet></router-outlet>
+</div>
+
+<div *ngIf="authenticationService.userData | async">
+  <button mat-button (click)="signOut()">Logout</button>
+</div>
